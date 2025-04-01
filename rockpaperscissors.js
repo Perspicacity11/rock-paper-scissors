@@ -95,15 +95,17 @@ class HumanPlayer extends Player {
 
 class ComputerPlayer extends Player {
     constructor(currentMove, score) {
+        super(currentMove, score)
         this.currentMove = currentMove
         this.score = score
-        super()
     }
 
     
-    static move = Math.floor(Math.random() * 3) + 1
+    // static move = Math.floor(Math.random() * 3) + 1
     
     move () {
+        let move = Math.floor(Math.random() * 3) + 1
+
         if(move === 1){
         this.currentMove = 'scissors'
         console.log(move)
