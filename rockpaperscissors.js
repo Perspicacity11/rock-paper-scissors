@@ -120,11 +120,13 @@ class ComputerPlayer extends Player {
 let gameOne = new Game
 let NPCPlayer = new ComputerPlayer
 let playerOne = new HumanPlayer
-playerOne.move()
-NPCPlayer.move()
+// playerOne.move()
 let playerMove = 'scissors'
+NPCPlayer.move()
+
+
 console.log('THE COMPUTER CHOSE:' + NPCPlayer.currentMove) // this shows that we are successfully activating the random roll and saving the result to this.currentMove
-// gameOne.round('scissors', 'paper')
+// gameOne.round('scissors', 'paper') //practice game round with hard coded player moves, returns win for the human player
 
 
 console.log('THE RESULT IS' + gameOne.round(playerMove, NPCPlayer.currentMove)) // this is coming back as 'undefined' because the Game.round() function doesn't return a value to be logged
