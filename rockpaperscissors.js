@@ -11,23 +11,23 @@ class Game {
         let move = `${playerMove} vs ${computerMove}`
 
         switch(move) {
-            case "Scissors vs Paper": console.log("WIN")
+            case "scissors vs paper": console.log("HUMAN PLAYER WINS")
             break;
-            case "Rock vs Scissors": console.log("WIN")
+            case "rock vs scissors": console.log("HUMAN PLAYER WINS")
             break;
-            case "Paper vs Rock": console.log("WIN")
+            case "paper vs rock": console.log("HUMAN PLAYER WINS")
             break;
-            case "Paper vs Paper": console.log("DRAW")
+            case "paper vs paper": console.log("DRAW")
             break;
-            case "Rock vs Rock": console.log("DRAW")
+            case "rock vs rock": console.log("DRAW")
             break;
-            case "Paper vs Paper": console.log("DRAW")
+            case "paper vs paper": console.log("DRAW")
             break;
-            case "Paper vs Scissors": console.log("LOSE")
+            case "paper vs scissors": console.log("HUMAN PLAYER LOSES")
             break;
-            case "Scissors vs Rock": console.log("LOSE")
+            case "scissors vs rock": console.log("HUMAN PLAYER LOSES")
             break;
-            case "Rock vs Paper": console.log("LOSE")
+            case "rock vs paper": console.log("HUMAN PLAYER LOSES")
             break;
         }
     }
@@ -63,6 +63,7 @@ class Player {
 
 class HumanPlayer extends Player { 
     constructor(currentMove, score) {
+        super(currentMove, score)
         this.currentMove = currentMove
         this.score = score
     }
@@ -84,7 +85,7 @@ class HumanPlayer extends Player {
     currentMove = playerInput
         console.log(playerInput)
         }
-        console.log(`rounds: ${rounds}, move: ${playerMove}`)
+     //   console.log(`rounds: ${rounds}, move: ${playerMove}`)
         rl.close()
         }}
 
@@ -99,30 +100,31 @@ class ComputerPlayer extends Player {
         this.currentMove = currentMove
         this.score = score
     }
-
-    
-    // static move = Math.floor(Math.random() * 3) + 1
     
     move () {
         let move = Math.floor(Math.random() * 3) + 1
 
         if(move === 1){
         this.currentMove = 'scissors'
-        console.log(move)
-        console.log(this.currentMove)
         }  
         else if (move == 2) {
         this.currentMove = 'rock'
-        console.log(move)
-        console.log(this.currentMove)
         }
         else if (move == 3) {
         this.currentMove = 'paper'
-        console.log(move)
-        console.log(this.currentMove)
         }
     }
 }
 
-let NPCPlayer = new ComputerPlayer('')
-console.log(NPCPlayer.move())
+
+let gameOne = new Game
+let NPCPlayer = new ComputerPlayer
+let playerOne = new HumanPlayer
+playerOne.move()
+NPCPlayer.move()
+let playerMove = 'scissors'
+console.log('THE COMPUTER CHOSE:' + NPCPlayer.currentMove) // this shows that we are successfully activating the random roll and saving the result to this.currentMove
+// gameOne.round('scissors', 'paper')
+
+
+console.log('THE RESULT IS' + gameOne.round(playerMove, NPCPlayer.currentMove)) // this is coming back as 'undefined' because the Game.round() function doesn't return a value to be logged
