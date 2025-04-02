@@ -11,24 +11,15 @@ class Game {
         let move = `${playerMove} vs ${computerMove}`
 
         switch(move) {
-            case "scissors vs paper": console.log("HUMAN PLAYER WINS")
-            break;
-            case "rock vs scissors": console.log("HUMAN PLAYER WINS")
-            break;
-            case "paper vs rock": console.log("HUMAN PLAYER WINS")
-            break;
-            case "paper vs paper": console.log("DRAW")
-            break;
-            case "rock vs rock": console.log("DRAW")
-            break;
-            case "paper vs paper": console.log("DRAW")
-            break;
-            case "paper vs scissors": console.log("HUMAN PLAYER LOSES")
-            break;
-            case "scissors vs rock": console.log("HUMAN PLAYER LOSES")
-            break;
-            case "rock vs paper": console.log("HUMAN PLAYER LOSES")
-            break;
+            case "scissors vs paper": return "HUMAN PLAYER WINS"
+            case "rock vs scissors": return "HUMAN PLAYER WINS"
+            case "paper vs rock": return "HUMAN PLAYER WINS"
+            case "paper vs paper": return "DRAW"
+            case "rock vs rock": return "DRAW"
+            case "paper vs paper": return "DRAW"
+            case "paper vs scissors": return "HUMAN PLAYER LOSES"
+            case "scissors vs rock": return "HUMAN PLAYER LOSES"
+            case "rock vs paper": return "HUMAN PLAYER LOSES"
         }
     }
 }
@@ -67,10 +58,9 @@ class HumanPlayer extends Player {
         this.currentMove = currentMove
         this.score = score
     }
-    static playerMove = ''
 
-    move() {rl.question("Rock, Paper or Scissors?"), function(playerInput){
-        owercaseInput = input.toLowerCase()
+    move() {rl.question("Rock, Paper or Scissors?"), function (playerInput) {
+        lowercaseInput = input.toLowerCase()
     if(lowercaseInput !== 'rock'){
         console.log("ERROR") 
     }
@@ -82,7 +72,7 @@ class HumanPlayer extends Player {
     } else {
         console.log(`You selected ${input}!`);
     };
-    currentMove = playerInput
+    this.currentMove = playerInput
         console.log(playerInput)
         }
      //   console.log(`rounds: ${rounds}, move: ${playerMove}`)
@@ -117,16 +107,24 @@ class ComputerPlayer extends Player {
 }
 
 
+
+// PRACTICE GAME
+
+
 let gameOne = new Game
 let NPCPlayer = new ComputerPlayer
+NPCPlayer.move()
+
 let playerOne = new HumanPlayer
 // playerOne.move()
 let playerMove = 'scissors'
-NPCPlayer.move()
 
+// console.log('THE HUMAN CHOSE: ' + playerOne.currentMove)
+console.log(playerMove)
 
-console.log('THE COMPUTER CHOSE:' + NPCPlayer.currentMove) // this shows that we are successfully activating the random roll and saving the result to this.currentMove
+console.log('THE COMPUTER CHOSE: ' + NPCPlayer.currentMove) // this shows that we are successfully activating the random roll and saving the result to this.currentMove
 // gameOne.round('scissors', 'paper') //practice game round with hard coded player moves, returns win for the human player
 
 
-console.log('THE RESULT IS' + gameOne.round(playerMove, NPCPlayer.currentMove)) // this is coming back as 'undefined' because the Game.round() function doesn't return a value to be logged
+// console.log('THE RESULT IS: ' + gameOne.round(playerOne.currentMove, NPCPlayer.currentMove)) // this is coming back as 'undefined' because the Game.round() function doesn't return a value to be logged
+console.log('THE RESULT IS: ' + gameOne.round(playerMove, NPCPlayer.currentMove)) // this is coming back as 'undefined' because the Game.round() function doesn't return a value to be logged
